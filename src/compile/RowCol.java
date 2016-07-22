@@ -1,6 +1,6 @@
 package compile;
 
-class RowCol {
+public class RowCol {
 	
 	public int row;
 	public int col;

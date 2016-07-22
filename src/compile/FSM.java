@@ -174,7 +174,7 @@ public class FSM {
 		}
 		
 	}
-
+	
 	public void Start() throws IOException {
 		int ch = 0;	// Temp char
 	outer:while((ch = reader.read()) != -1 && ch != 65535) {
@@ -313,21 +313,19 @@ public class FSM {
 		}
 	}
 
-	// Analyzer will use these
-	ArrayList<Tuple> getTuples() {
-		return tupleArray;
+	private class Tuple {
+		
+		int code = -1;
+		String strContent = "";	// Define
+		RowCol xy = new RowCol(0, 0);
+		
+		Tuple(int code, String strContent, final RowCol xy) {
+			this.code = code;
+			this.strContent = strContent;
+			this.xy.col = xy.col;
+			this.xy.row = xy.row;
+		}
 	}
 	
-	Hashtable<String, Integer> getReserveTable() {
-		return reserveTable;
-	}
-	
-	Hashtable<String, Integer> getTokenTable() {
-		return tokenTable;
-	}
-	
-	String getFolderPath() {
-		return folderPath;
-	}
 
 }
