@@ -1,4 +1,4 @@
-package xjtu.se.compile;
+package compile;
 
 import java.io.File;
 

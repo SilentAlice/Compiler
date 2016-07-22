@@ -1,4 +1,4 @@
-package xjtu.se.compile;
+package compile;
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -174,22 +174,7 @@ public class FSM {
 		}
 		
 	}
-	
-	// Transfer elements to Analyzer
-	public void outPut(
-			HashSet<String> numberSet,
-			HashSet<String> idSet,
-			ArrayList<Tuple> tupleArray,
-			HashMap<RowCol, String> errorTable,
-			String folderPath
-			) {
-		numberSet = this.numberSet;
-		idSet = this.idSet;
-		tupleArray = this.tupleArray;
-		errorTable = this.errorTable;
-		folderPath = this.folderPath;
-	}
-	
+
 	public void Start() throws IOException {
 		int ch = 0;	// Temp char
 	outer:while((ch = reader.read()) != -1 && ch != 65535) {
@@ -328,19 +313,21 @@ public class FSM {
 		}
 	}
 
-	private class Tuple {
-		
-		int code = -1;
-		String strContent = "";	// Define
-		RowCol xy = new RowCol(0, 0);
-		
-		Tuple(int code, String strContent, final RowCol xy) {
-			this.code = code;
-			this.strContent = strContent;
-			this.xy.col = xy.col;
-			this.xy.row = xy.row;
-		}
+	// Analyzer will use these
+	ArrayList<Tuple> getTuples() {
+		return tupleArray;
 	}
 	
+	Hashtable<String, Integer> getReserveTable() {
+		return reserveTable;
+	}
+	
+	Hashtable<String, Integer> getTokenTable() {
+		return tokenTable;
+	}
+	
+	String getFolderPath() {
+		return folderPath;
+	}
 
 }

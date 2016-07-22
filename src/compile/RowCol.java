@@ -1,6 +1,6 @@
-package xjtu.se.compile;
+package compile;
 
-public class RowCol {
+class RowCol {
 	
 	public int row;
 	public int col;
